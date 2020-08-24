@@ -1,14 +1,18 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-sacle=1">
-        <title>Inicio</title>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Página com links das minhas atividades</h1>
-            <p> <a href="20200811/index.php">Link Exercicio Modificação de Texto</a></p>
-        </div>
-    </body>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Link para minhas atividades</title>
+</head>
+<body>
+    <h1>Link para minhas atividades:</h1>
+    <p>
+        <h3>Dia 18/08/2020:</h3>
+        <a href="20200818/index.php">Editor de texto com JQuery</a>
+    </p>
+    <p>
+        <h3>Dia 19/08/2020:</h3>
+        <a href="20200819/index.php">Engenharia Reversa</a>
+    </p>
+</body>
 </html>
