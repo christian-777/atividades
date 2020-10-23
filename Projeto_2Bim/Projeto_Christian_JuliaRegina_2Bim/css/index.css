@@ -1,0 +1,43 @@
+body{
+	min-height: 100vh;
+	background-color: #CCC;
+}
+
+.login-form {
+	margin-top: 50vh;
+	padding: 40px 40px;
+	background-color: rgb(250,250,250);
+	color: rgb(0, 0, 0);
+	transform: translateY(-50%);
+}
+
+.login-form h1{
+	margin: 0 0 5px;
+}
+
+.login-form h2{
+	margin: 0 0 30px;
+	font-size: 1em;
+}
+
+
+.table {
+	margin-top: 50vh;
+	padding: 40px 40px;
+	background-color: rgb(250,250,250);
+	color: rgb(0, 0, 0);
+	transform: translateY(-3%);
+}
+
+.footer{
+	position: fixed;
+	left: 0px;
+	bottom: 0px;
+	width: 100%;
+	color: white;
+}
+
+#linha {
+	width: 100%;
+	border-bottom: 1px solid white;
+  }
