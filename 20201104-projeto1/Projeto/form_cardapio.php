@@ -17,27 +17,29 @@ cabecalho();
         $.getJSON("seleciona_comida_tipo.php", function(g){
             var checkbox="";
             $.each(g, function(indice, valor){
-                checkbox +="<input class='check' type='checkbox' value='"+valor.id_comida+"' name='comidas[]'/> "+valor.nome+"("+valor.tipo+")<b>"+valor.preco+"<br />";
+                checkbox +="<input class='check' type='checkbox' value='"+valor.id_comida+"' name='comidas[]'/> "+valor.nome+"("+valor.tipo+") preço:"+valor.preco+"<br />";
             });
             $("#recebe").html(checkbox);              
         });
         $("#select").change(function(){
-            var checkbox="";
-            var id= $("#select").val();
-            $.each(g, function(indice, valor){
-                if(id==valor.id_tipo)
-                {
-                    checkbox +="<input class='check' type='checkbox' value='"+valor.id_comida+"' name='comidas[]'/> "+valor.nome+"("+valor.tipo+")<b>"+valor.preco+"<br />";
-                }
-            });
-            $("#recebe").html(checkbox);      
+                var checkbox="";
+                var id= $("#select").val();
+                $.post("seleciona_comida_tipo.php", {"id":id},function(g){
+                $.each(g, function(indice, valor){
+                    if(id==valor.id_tipo)
+                    {
+                        checkbox +="<input class='check' type='checkbox' value='"+valor.id_comida+"' name='comidas[]'/> "+valor.nome+"("+valor.tipo+") preço:"+valor.preco+"<br />";
+                    }
+                });
+                $("#recebe").html(checkbox);    
+            });  
         });
     });
 </script>
 <?php
 if(empty($_POST))
 {
-    echo'<form method="POST" action="form_comidas.php">
+    echo'<form method="POST" action="form_cardapio.php">
         <fieldset>
             <legend>Cardapio</legend>
             <select id="select" name="select">

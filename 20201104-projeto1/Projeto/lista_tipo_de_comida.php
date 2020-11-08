@@ -3,8 +3,25 @@ include "conf.php";
 
 cabecalho();
 
-echo "<div>aqui vai uma lista de elementos do link 1. Não se esqueça que esse arquivo
-é um exemplo. Troque o nome e link em conf.php e crie os seus arquivos.</div>";
+?>
+<script>
+    $(document).ready(function(){
+        $.getJSON("seleciona_tipo.php", function(g){
+            var lista="";
+            $.each(g, function(indice, valor){
+                lista+="<li>"+valor.tipo+"</li>";
+            });
+            $("#lista").html(lista);
+        });
+    });
+</script>
+<?php
+echo'<fieldset>
+    <legend>Tipos de comidas</legand>
+    <ul id="lista">
+
+    </ul>
+</fieldset>';
 
 rodape();
 
