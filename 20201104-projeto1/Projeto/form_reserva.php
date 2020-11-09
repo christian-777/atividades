@@ -7,10 +7,10 @@ cabecalho();
 <script>
     $(document).ready(function(){
         $("#nome").change(function(){
-            $.getJSON("seleciona_cardapios.php", function(g){
+            $.getJSON("seleciona_cardapio.php", function(g){
             option="<option label='Cardapios Personalizados' />";
                 $.each(g, function(indice, valor){
-                    option+="<option value='"+valor.id_cardapio+"'> "+valor.nome+" </option>";
+                    option+="<option value='"+valor.id_cardapio+"'> "+valor.nome_cardapio+" </option>";
                 });
             $("#select").html(option);
             });
@@ -20,7 +20,7 @@ cabecalho();
 <?php
 if(empty($_POST))
 {
-    echo'<form method="POST" action="form_comidas.php">
+    echo'<form method="POST" action="form_reserva.php">
         <fieldset>
             <legend>Cardapio</legend>
             <input type="text" name="nome" id="nome" required="required" placeholder="Nome do cliente"/>

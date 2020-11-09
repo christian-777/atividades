@@ -3,7 +3,7 @@
     $cardapio = $_POST["select"];
     $nome = $_POST["nome"];
     
-    $insert = "INSERT INTO cardapio(
+    $insert = "INSERT INTO reserva(
                                     nome,
                                     cod_cardapio
                                 ) VALUES (

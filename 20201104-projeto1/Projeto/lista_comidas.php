@@ -36,7 +36,7 @@ cabecalho();
 </script>
 <?php
 echo'<fieldset>
-    <legend>Tipos de comidas</legand><br />
+    <legend>Tipos de comidas</legend><br />
     <select id="select">
     <option label="Selecione um tipo de comida" />
     </select>

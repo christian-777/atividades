@@ -17,7 +17,7 @@ cabecalho();
 </script>
 <?php
 echo'<fieldset>
-    <legend>Tipos de comidas</legand>
+    <legend>Tipos de comidas</legend>
     <ul id="lista">
 
     </ul>
