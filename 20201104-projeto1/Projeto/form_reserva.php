@@ -22,8 +22,9 @@ if(empty($_POST))
 {
     echo'<form method="POST" action="form_reserva.php">
         <fieldset>
-            <legend>Cardapio</legend>
+            <legend>Reservas</legend>
             <input type="text" name="nome" id="nome" required="required" placeholder="Nome do cliente"/>
+            <br />
             <select id="select" name="select" required="required">
                 <option label="Cardapios Personalizados" />
             </select>

@@ -6,7 +6,7 @@
                     "comidas"=>"Comidas",
                     //...coloque os links com os seus textos.
                     "cardapio"=>"Cardapio",
-                    "reserva"=>"reserva"
+                    "reserva"=>"Reserva"
                 );
 
     include "cabecalho.php";

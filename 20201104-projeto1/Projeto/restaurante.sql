@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS `cardapio` (
   `id_cardapio` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(100) NOT NULL,
   PRIMARY KEY (`id_cardapio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Extraindo dados da tabela `cardapio`
@@ -54,7 +54,7 @@ CREATE TABLE IF NOT EXISTS `cardapio_comida` (
   PRIMARY KEY (`id_cardapio_comida`),
   KEY `cod_comida` (`cod_comida`),
   KEY `cod_cardapio` (`cod_cardapio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS `comida` (
   `preco` float NOT NULL,
   PRIMARY KEY (`id_comida`),
   KEY `cod_tipo` (`cod_tipo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `reserva` (
   `cod_cardapio` int(11) NOT NULL,
   PRIMARY KEY (`id_reserva`),
   KEY `cod_cardapio` (`cod_cardapio`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -95,7 +95,7 @@ CREATE TABLE IF NOT EXISTS `tipo_comida` (
   `id_tipo` int(11) NOT NULL AUTO_INCREMENT,
   `tipo` varchar(100) NOT NULL,
   PRIMARY KEY (`id_tipo`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
 
 --
 -- Constraints for dumped tables

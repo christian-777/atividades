@@ -22,7 +22,7 @@ cabecalho();
             $.each(g, function(indice, valor){
                 tabela+="<tr><td>"+valor.nome_comida+"</td><td>"+valor.tipo_comida+"</td><td>"+valor.preco_comida+"</td></tr>";
             });
-            tabela+="</table>"
+            tabela+="</table>";
             $("#recebe").html(tabela);
         });
         });
