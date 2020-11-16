@@ -42,7 +42,7 @@ if(empty($_POST))
     echo'<form method="POST" action="form_cardapio.php">
         <fieldset>
             <legend>Cardapio</legend>
-            <select id="select" name="select" required="required">
+            <select id="select" name="select" >
                 <option label="Tipo de Comida" />
             </select>
             <br />

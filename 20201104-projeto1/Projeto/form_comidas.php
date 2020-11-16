@@ -8,7 +8,6 @@ cabecalho();
     $(document).ready(function(){
         $("#comida").change(function(){
             $.getJSON("seleciona_tipo.php", function(g){
-                console.log("roi");
                 option="<option label='Tipo de Comida' />";
                 $.each(g, function(indice, valor){
                     option+="<option value='"+valor.id_tipo+"'> "+valor.tipo+" </option>";

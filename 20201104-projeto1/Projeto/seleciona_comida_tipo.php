@@ -8,7 +8,7 @@
     }
     else
     {
-        $select="SELECT id_tipo, tipo, nome, id_comida, preco FROM tipo_comida inner join comida on comida.cod_tipo=tipo_comida.id_tipo";
+        $select="SELECT  nome, id_comida, preco FROM comida";
 
     }
     $res = mysqli_query($con, $select) or die(mysqli_error($con));
