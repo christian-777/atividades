@@ -12,7 +12,7 @@ cabecalho();
                 $.each(g, function(indice, valor){
                     option+="<option value='"+valor.id_tipo+"'> "+valor.tipo+" </option>";
                 });
-                $("#select").html(option);
+                $("#select, #select2").html(option);
             });
         });
     });

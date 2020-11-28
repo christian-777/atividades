@@ -22,7 +22,7 @@ cabecalho();
             $("#recebe").html(checkbox);              
         });
         $("#select").change(function(){
-                var checkbox="";
+                var checkbox="";   
                 var id= $("#select").val();
                 $.post("seleciona_comida_tipo.php", {"id":id},function(g){
                 $.each(g, function(indice, valor){

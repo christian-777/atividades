@@ -1,5 +1,5 @@
 <?php
-    $alt = "Garfo e Colher em um prato ";
+    $alt = "Garfo e Faca em um prato ";
     $desenvolvedor = "Christian G. Ferreira";
     $menu = array(
                     "tipo_de_comida"=>"Tipo de comida ",
