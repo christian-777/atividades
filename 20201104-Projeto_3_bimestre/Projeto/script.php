@@ -399,7 +399,7 @@
 
         function selects_comidas(){
             $.getJSON("seleciona_tipo.php", function(g){
-            var option="<option label='Selecione um tipo de comida'/>";
+            var option='<option label="Selecione um tipo de comida"></option>';
             $.each(g, function(indice, valor){
                 option+="<option value='"+valor.id_tipo+"'> "+valor.tipo+" </option>";
             });
@@ -415,6 +415,9 @@
                     lista+="<li>"+valor.nome+" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button></li>";
                 });
             $("#recebe").html(lista);
+            altera();
+            remove_comida();
+            salvar_comida();
             });
         });
         }

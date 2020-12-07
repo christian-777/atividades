@@ -14,8 +14,8 @@ cabecalho();
 echo'<fieldset>
     <legend>Comidas</legend><br />
     <div id="msg"></div>
-    <select id="select">
-    <option label="Selecione um tipo de comida" />
+    <select id="select" required="required">
+    
     </select>
     <ul id="recebe">
     </ul>
