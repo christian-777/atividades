@@ -299,8 +299,12 @@
         function lista_tipo(){
             $.getJSON("seleciona_tipo.php", function(g){
         var lista="";
+        console.log(sessionStorage.getItem('permissao'));
         $.each(g, function(indice, valor){
-            lista+="<li>"+valor.tipo+" || <button class='btn btn-danger remover'  value='"+valor.id_tipo+"'>Remover</button> || <button class='btn btn-warning alterar' id='alterar_tipo' name='alterar_tipo' value='"+valor.id_tipo+"' data-toggle='modal' data-target='#modal'>Alterar</button> </li>";
+            lista+="<li>"+valor.tipo+"</li>";
+            if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                lista+=" || <button class='btn btn-danger remover'  value='"+valor.id_tipo+"'>Remover</button> || <button class='btn btn-warning alterar' id='alterar_tipo' name='alterar_tipo' value='"+valor.id_tipo+"' data-toggle='modal' data-target='#modal'>Alterar</button> ";
+            }
         });
         $("#lista").html(lista);
         remove_tipo_comida();
@@ -313,7 +317,10 @@
             $.getJSON("seleciona_comida_tipo.php", function(g){
                 var lista="";
                 $.each(g, function(indice, valor){
-                    lista+="<li>"+valor.nome+" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button></li>";
+                    lista+="<li>"+valor.nome+"</li>";
+                    //if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                      //  lista+=" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button>";
+                    //}
                 });
             $("#recebe").html(lista);
                 remove_comida();
@@ -412,7 +419,10 @@
             $.post("seleciona_comida_tipo.php",{"id":id}, function(g){
                 var lista="";
                 $.each(g, function(indice, valor){
-                    lista+="<li>"+valor.nome+" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button></li>";
+                    lista+="<li>"+valor.nome+"</li>";
+                    //if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                        //lista+=" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button>";
+                    //}
                 });
             $("#recebe").html(lista);
             altera();

@@ -1,4 +1,5 @@
 <?php
+
 include "conf.php";
 
 cabecalho();

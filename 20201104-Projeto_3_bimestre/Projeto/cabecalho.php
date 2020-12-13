@@ -52,11 +52,7 @@ function cabecalho(){
                         </li>";
                 }  
                 echo "
-                    <ul class='navbar-nav'>
-                        <li role='presentation'>
-                            <a href='logout.php'>Logout</a>
-                        </li>
-                    </ul>
+                    
                         </ul>
                     </li>
                     <ul class='navbar-nav'>
@@ -66,11 +62,31 @@ function cabecalho(){
                     </ul>";
             }
             else{
-                    echo"<ul class='navbar-nav'>
+                    echo" <ul class='navbar-nav'>
+                    <li role='presentation'>
+                        <a href='#' data-toggle='modal' data-target='#modal_cadastro'>Cadastrar-se</a>
+                    </li>
+                </ul>
+                    
+                    <ul class='navbar-nav'>
                         <li role='presentation'>
                             <a href='#' data-toggle='modal' data-target='#modal_login'>Login</a>
                         </li>
-                    </ul>";
+                    </ul>
+                    <li role='presentation' class='dropdown'>
+                    <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+                      Listar <span class='caret'></span>
+                    </a>
+                    <ul class='dropdown-menu'>";
+                    $cont=0;                        
+                foreach($menu as $i=>$l){
+                    if($cont == 0 || $cont == 1){
+                        echo "<li class='nav-item'>
+                            <a class='menu' href='lista_$i.php'>$l</a>
+                        </li>";
+                    }
+                    $cont++;
+                }  
             }
             echo "</ul>  
                     
@@ -78,8 +94,17 @@ function cabecalho(){
         </nav>
         <main role='main' class='container'>";
         if(isset($_GET["erro"])){
-            echo"<div id='erro'>ERRO na autenticação</div>";
+            if($_GET["erro"]==2){
+                echo"<div id='erro'>ERRO: Cadastre-se de forma correta!!</div>";
+            }
+            else{
+                echo"<div id='erro'>ERRO na autenticação</div>";
+            }
+        }
+        if(isset($_GET["confirmacao"])){
+            echo"<div id='confirmacao'>CADASTRADO com sucesso!!!</div>";
         }
         include "form_login.php";
+        include "form_cadastro.php";
 }
 ?>

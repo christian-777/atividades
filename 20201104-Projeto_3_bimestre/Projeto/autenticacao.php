@@ -1,12 +1,13 @@
 <?php
 session_start();
-
+//echo'<script>sessionStorage.setItem("permissao","2");
+//console.log(sessionStorage.getItem("permissao"));</script>';
     if(!empty($_POST)){
         include "conexao.php";
         $email = $_POST["email"];
         $senha = $_POST["senha"];
 
-        $sql = "SELECT id_usuario FROM usuarios
+        $sql = "SELECT id_usuario , permissao FROM usuarios
                     WHERE email='$email' AND senha='$senha'";
         
         $res = mysqli_query($con,$sql)
@@ -16,7 +17,20 @@ session_start();
 
             $l = mysqli_fetch_assoc($res);
             $_SESSION["usuario"]=$l["id_usuario"];
-            header("location: index.php");
+            $_SESSION["permissao"]=$l["permissao"];
+            echo'<script src="js/jquery-3.5.1.min.js"></script>
+            <script>
+            $(document).ready(function(){
+                function volta(){
+                    window.location="index.php";
+                }
+                function aplica(){
+                    sessionStorage.setItem("permissao","'.$l["permissao"].'");
+                    console.log(sessionStorage.getItem("permissao"));
+                    volta();
+                }
+                aplica();  
+            });</script>';
         }
         else{
             header("location: index.php?erro=1");

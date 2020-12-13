@@ -24,8 +24,32 @@
         <a href="20200916/form.php">API VIACEP</a>
     </p>
     <p>
-        <h3>Projeto:</h3>
+        <h3>Projeto Primeiro Bimestre:</h3>
         <a href="trabalho/grupob.php">Projeto</a>
+    </p>
+    <p>
+        <h3>Dia 23/09/2020 Listagem de Itens cadastrados em banco de Dados:</h3>
+        <a href="20200923/especie.php">Taxonomia- Tabela especies de animais || </a>
+        <a href="20200923/familia.php">Taxonomia- Tabela familias de animais || </a>
+        <a href="20200923/genero.php">Taxonomia- Tabela genero de animais</a>
+    </p>
+    <p>
+        <h3>Dia 30/09/2020 Filtro com select e inner join:</h3>
+        <a href="20200923/especie.php">Taxonomia- Tabela especies de animais || </a>
+        <a href="20200923/familia.php">Taxonomia- Tabela familias de animais || </a>
+        <a href="20200923/genero.php">Taxonomia- Tabela genero de animais</a>
+    </p>
+    <p>
+        <h3>Dia 14/10/2020:</h3>
+        <a href="2020.10.14/index.php">Taxonomia cadastro, filtro e listagem</a>
+    </p>
+    <p>
+        <h3>Projeto Segundo Bimestre:</h3>
+        <a href="Projeto_2Bim/Projeto_Christian_JuliaRegina_2Bim/index.php">Projeto</a>
+    </p>
+    <p>
+        <h3>Projeto Acumulativo Terceiro Bimestre:</h3>
+        <a href="20201104-Projeto_3_bimestre/Projeto/index.php">Projeto</a>
     </p>
 </body>
 </html>
