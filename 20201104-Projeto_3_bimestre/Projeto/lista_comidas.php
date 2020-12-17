@@ -1,7 +1,8 @@
 <?php
 include "conf.php";
-include "script.php";
+
 cabecalho();
+include "script.php";
 
 ?>
 <script>

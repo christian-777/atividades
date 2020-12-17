@@ -29,16 +29,34 @@ function cabecalho(){
             <div class='collapse navbar-collapse' id='menu'>
                 <ul class='navbar-nav'>";
                 if(isset($_SESSION["usuario"])){
+                    if($_SESSION["permissao"]!=1){
+                        $cont1=0;
+                        echo"<li role='presentation' class='dropdown'>
+                                <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
+                                Cadastrar<span class='caret'></span>
+                                </a>
+                                <ul class='dropdown-menu'>"; 
+                        foreach($menu as $i=>$l){
+                            if($cont1 == 2 || $cont1 == 3){
+                                echo "<li class='nav-item'>
+                                <a class='menu' href='form_$i.php'>$l</a>
+                                </li>";
+                            }
+                            $cont1++;
+                        }   
+                    }
+                    else{
                       echo"<li role='presentation' class='dropdown'>
                         <a class='dropdown-toggle' data-toggle='dropdown' href='#' role='button' aria-haspopup='true' aria-expanded='false'>
-                          Cadastrar <span class='caret'></span>
+                          Cadastrar<span class='caret'></span>
                         </a>
-                        <ul class='dropdown-menu'>";                        
-                    foreach($menu as $i=>$l){
-                        echo "<li class='nav-item'>
-                                <a class='menu' href='form_$i.php'>$l</a>
-                            </li>";
-                    }  
+                        <ul class='dropdown-menu'>"; 
+                        foreach($menu as $i=>$l){
+                            echo "<li class='nav-item'>
+                                    <a class='menu' href='form_$i.php'>$l</a>
+                                </li>";
+                        }  
+                    }                       
                     echo "</ul>
                     </li>
                     <li role='presentation' class='dropdown'>
@@ -60,8 +78,30 @@ function cabecalho(){
                             <a href='logout.php'>Logout</a>
                         </li>
                     </ul>";
+                    if($_SESSION["permissao"]==3){
+                        echo "<ul class='navbar-nav'>
+                        <li role='presentation'>
+                            <a href='lista_usuarios.php'>Perfil</a>
+                        </li>
+                    </ul>";
+                    }
+                    if($_SESSION["permissao"]==1){
+
+                        echo"<ul class='navbar-nav'>
+                        <li role='presentation'>
+                            <a href='#' data-toggle='modal' data-target='#modal_cadastro'>Cadastrar</a>
+                        </li>
+                    </ul>
+                    <ul class='navbar-nav'>
+                        <li role='presentation'>
+                            <a href='lista_usuarios.php'>Usuarios</a>
+                        </li>
+                    </ul>";
+                    }
             }
+
             else{
+
                     echo" <ul class='navbar-nav'>
                     <li role='presentation'>
                         <a href='#' data-toggle='modal' data-target='#modal_cadastro'>Cadastrar-se</a>

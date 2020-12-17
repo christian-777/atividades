@@ -1,3 +1,9 @@
+
+<?php
+session_start();
+session_destroy();
+//header("location: index.php");
+?>
 <script src='js/jquery-3.5.1.min.js'></script>
 <script>
 $(document).ready(function(){
@@ -11,8 +17,3 @@ $(document).ready(function(){
     limpa();  
 });
 </script>
-<?php
-session_start();
-session_destroy();
-//header("location: index.php");
-?>

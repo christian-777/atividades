@@ -13,6 +13,20 @@
             <input type="text" name="nome_cad" placeholder="Digite seu nome ..."/>
             <input type="email" name="email_cad" placeholder="E-mail..." />
             <input type="password" name="senha_cad" placeholder="Senha..."/>
+            <?php
+              if(isset($_SESSION["permissao"]) && $_SESSION["permissao"]==1){
+                echo '<p>Nivel de Permissao no sistema:</p> 
+                <p>
+                <input type="radio" name="permissao" value="1"/> Administrador 
+                </p>
+                <p>
+                <input type="radio" name="permissao" value="2"/> Funcionario 
+                </p>
+                <p>
+                <input type="radio" name="permissao" value="3"/> Usuario 
+                </p>';
+              }
+            ?>
         
       </div>
       <div class="modal-footer">
@@ -29,7 +43,7 @@
         $("#cadastrar").click(function(){
             var senha = $.md5($("input[name='senha_cad']").val());
             $("input[name='senha_cad']").val(senha);
-            $("#cadastrar").attr("disabled", true);
+            $("#cadastrar").attr("readonly", true);
             $("#cansel").attr("disabled", true);
             $("#reset").attr("disabled", true);
             $("form[name='form2']").submit();

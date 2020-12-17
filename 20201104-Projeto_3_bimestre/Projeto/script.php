@@ -51,6 +51,17 @@
                     $("select[name='selectreserva']").val(a.id_cardapio);
                 });
             }); 
+
+            $("button[name='alterar_usuario']").click(function(){
+
+                i = $(this).val();
+                    $.post("seleciona_usuario.php",{"id":i},function(r){
+                        a = r[0];        
+                        $("input[name='hidden']").val(a.id_usuario);                       
+                        $("input[name='nome']").val(a.nome);
+                        $("input[name='email']").val(a.email);
+                    });
+                });
         }
 
         function salvar(){
@@ -153,6 +164,42 @@
            });
        }); 
         }
+
+        function salvar_usuario(){
+            $("#salvar").click(function(){ 
+               if(sessionStorage.getItem("senha") && $("input[name='senha']").val()!=""){
+                   if($("input[name='senha']").val()==$("input[name='confirma_senha']").val()){
+                        p = {
+                            nome:$("input[name='nome']").val(),
+                            email:$("input[name='email']").val(),
+                            senha:$("input[name='senha']").val()
+                        };    
+                   }
+                   else{
+                    $(".close").click();
+                       $("#msg").html("Confirme corretamente a senha");
+                   }
+               }
+               else{
+                        p = {
+                            id:$("input[name='hidden']").val(),
+                            nome:$("input[name='nome']").val(),
+                            email:$("input[name='email']").val()
+                        };  
+               }   
+               
+               $.post("atualizar_usuario.php",p,function(r){
+                if(r=='1'){
+                    $("#msg").html("Dados do usuario alterado(os) com sucesso.");
+                    $(".close").click();
+                    atualizar_usuario();                
+                }else{
+                    $("#msg").html("Falha ao atualizar dado(os) do usuario.");
+                    $(".close").click();
+                }
+               });
+           }); 
+        }
         
 
        function atualizar(){           
@@ -218,6 +265,45 @@
             altera();
             salvar_reserva();
             });
+        }
+
+        function atualizar_usuario(){
+            
+            $.getJSON("seleciona_usuario.php", function(g){
+            var lista="";
+            var table="<table border='1'><tr><td>Nome</td><td>Email</td><td>Senha</td></tr>";
+            var c=parseInt(g[0].id_usuario);
+               
+               var con=0;
+               $.each(g, function(indice, valor){
+                    if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                            var i=parseInt(g[con].id_usuario);
+                            console.log("ue");
+                            if(c != i){
+                                tabela+="<tr><td colspan='3'><button class='btn btn-danger remover'  value='"+t+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_usuario' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td></tr>";
+                                c=i;
+                            }
+                            tabela+="<tr><td>"+valor.nome+"</td><td>"+valor.email+"</td><td>Senha oculpa por motivos de segurança</td>"; 
+                            t=valor.id_usuario;
+                        con++;
+                    }
+                    else{
+                        tabela+="<tr><td>"+valor.nome+"</td><td>"+valor.email+"</td><td>Senha oculpa por motivos de segurança</td>";
+                        t=valor.id_usuario;
+                    }
+               });
+               if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                tabela+="<tr><td colspan='3'><button class='btn btn-danger remover'  value='"+t+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_usuario' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td></tr>";
+               }
+               else{
+                tabela+="<tr><td colspan='3'>|| <button class='btn btn-warning alterar' name='alterar_usuario' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td></tr>";
+               }
+        tabela+="</table>"
+        $("#tabela").html(tabela);
+        remove_usuario();
+        altera();
+        salvar_usuario();
+        });
         }
 
 
@@ -295,6 +381,80 @@
                 }); 
         }
 
+        function remove_usuario(){
+            $(".remover").click(function(){
+                        i = $(this).val();
+                        c = "id_";usuario
+                        t = "usuarios";
+                        p = {tabela: t, id:i, coluna:c}
+                        $.post("remover.php",p,function(r){
+                            if(r=='1'){                
+                                $("#msg").html("Usuario removido com sucesso.");
+                                $("button[value='"+ i +"']").closest("li").remove();
+                            }
+                            else
+                            {
+                                $("#msg").html("Erro ao remover: este item nao pode ser removido pois esta ligado a outro item ainda cadastrado!!.");
+                            }
+                        });
+                    }); 
+        }
+
+
+        function lista_usuario(){
+            $.getJSON("seleciona_usuario.php", function(g){
+        var lista="";
+        var tabela="<table border='1'><tr><td>Nome</td><td>Email</td><td>Senha</td></tr>";
+        var c=Number.parseInt(g[0].id_usuario);
+               
+               var con=0;
+               $.each(g, function(indice, valor){
+                    if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                            var i=Number.parseInt(g[con].id_usuario);
+                            
+                            if(c != i){
+                                tabela+="<tr><td colspan='3'><button class='btn btn-danger remover'  value='"+t+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_usuario' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td><tr>";
+                                c=i;
+                            }
+                            tabela+="<tr><td>"+valor.nome+"</td><td>"+valor.email+"</td><td>Senha oculta por motivos de segurança</td>"; 
+                            t=valor.id_usuario;
+                        con++;
+                    }
+                    else{
+                        tabela+="<tr><td>"+valor.nome+"</td><td>"+valor.email+"</td><td>Senha oculta por motivos de segurança</td>";
+                        t=valor.id_usuario;
+                    }
+               });
+               if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                tabela+="<tr><td colspan='3'><button class='btn btn-danger remover'  value='"+t+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_usuario' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td></tr>";
+               }
+               else{
+                tabela+="<tr><td colspan='3'> <button class='btn btn-warning alterar' name='alterar_usuario' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td></tr>"
+               }
+        tabela+="</table>"
+        $("#tabela").html(tabela);
+        remove_usuario();
+        altera();
+        salvar_usuario();
+        });
+        }
+
+        function lista_comida(){
+            $.getJSON("seleciona_comida_tipo.php", function(g){
+                var lista="";
+                $.each(g, function(indice, valor){
+                    lista+="<li>"+valor.nome+"</li>";
+                    if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                       lista+=" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button>";
+                    }
+                });
+            $("#recebe").html(lista);
+                remove_comida();
+                altera();
+                salvar_comida();
+        });
+        }
+
 
         function lista_tipo(){
             $.getJSON("seleciona_tipo.php", function(g){
@@ -318,9 +478,9 @@
                 var lista="";
                 $.each(g, function(indice, valor){
                     lista+="<li>"+valor.nome+"</li>";
-                    //if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
-                      //  lista+=" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button>";
-                    //}
+                    if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                       lista+=" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button>";
+                    }
                 });
             $("#recebe").html(lista);
                 remove_comida();
@@ -341,22 +501,37 @@
         }
 
         function lista_reserva(){
-            $.getJSON("seleciona_reserva_de_cardapio.php", function(g){
-            var option="<option label='Selecione seu nome' />";
-            $.each(g, function(indice, valor){
-                option+="<option value='"+valor.id_reserva+"'> "+valor.nome+" </option>";
+            if(sessionStorage.getItem("permissao")==1)
+            {
+                console.log("i");
+                $.getJSON("seleciona_reserva_de_cardapio.php", function(g){
+                var option="<option label='Selecione seu nome' />";
+                $.each(g, function(indice, valor){
+                    option+="<option value='"+valor.id_reserva+"'> "+valor.nome+" </option>";
+                });
+                $("#select").html(option);
+                select_reserva();
+                });
+            $.getJSON("seleciona_cardapio.php", function(g){
+                    
+                var option="<option label='Selecione um cardapio' />";
+                $.each(g, function(indice, valor){
+                    option+="<option value='"+valor.id_cardapio+"'> "+valor.nome_cardapio+" </option>";
+                });
+                $("#selectreserva").html(option);
             });
-            $("#select").html(option);
-            select_reserva();
-        });
-        $.getJSON("seleciona_cardapio.php", function(g){
-                
-            var option="<option label='Selecione um cardapio' />";
-            $.each(g, function(indice, valor){
-                option+="<option value='"+valor.id_cardapio+"'> "+valor.nome_cardapio+" </option>";
-            });
-            $("#selectreserva").html(option);
-        });
+            }
+            else{
+                $.getJSON("seleciona_cardapio.php", function(g){
+                    console.log("att");
+                    var option="<option label='Selecione um cardapio' />";
+                    $.each(g, function(indice, valor){
+                        option+="<option value='"+valor.id_cardapio+"'> "+valor.nome_cardapio+" </option>";
+                    });
+                    $("#selectreserva").html(option);
+                });
+                select_reserva();
+            }
         }
 
         function select_cardapio(){
@@ -383,6 +558,37 @@
 
         
         function select_reserva(){
+            if(sessionStorage.getItem("permissao")==3){
+                
+                $.getJSON("seleciona_reserva_de_cardapio.php", function(g){
+                  
+               var tabela="<table border='1'><td>nome cardapio</td><td>Nome comida</td><td>tipo comida</td><td>preço</td></tr>";
+               console.log(g);
+               var c=(g[0].nome_cardapio.toString());
+               
+               var con=0;
+               $.each(g, function(indice, valor){
+                   
+                        var i=g[con].nome_cardapio.toString();
+                        
+                        if(c != i){
+                            console.log(t+" destro da tabela");
+                            tabela+="<td colspan='4'><button class='btn btn-danger remover'  value='"+t+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_reserva' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td>";
+                            c=i;
+                        }
+                        tabela+="<tr><td>"+valor.nome_cardapio+"</td><td>"+valor.nome_comida+"</td><td>"+valor.tipo_comida+"</td><td>"+valor.preco_comida+"</td></tr>"; 
+                        t=valor.id_reserva;
+                   con++;
+               });
+               
+               tabela+="<td colspan='4'><button class='btn btn-danger remover'  value='"+t+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_reserva' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td>"
+               tabela+="</table>"
+               $("#recebe").html(tabela);
+               remove_reserva();
+               altera();
+               salvar_reserva();
+               });
+            }
             $("#select").change(function(){
             var id =$("#select").val();
             var t="";
@@ -420,9 +626,9 @@
                 var lista="";
                 $.each(g, function(indice, valor){
                     lista+="<li>"+valor.nome+"</li>";
-                    //if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
-                        //lista+=" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button>";
-                    //}
+                    if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
+                        lista+=" || <button class='btn btn-danger remover'  value='"+valor.id_comida+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_comida' value='"+valor.id_comida+"' data-toggle='modal' data-target='#modal'>Alterar</button>";
+                    }
                 });
             $("#recebe").html(lista);
             altera();

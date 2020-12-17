@@ -9,7 +9,6 @@
         <select id="selectreserva" name="selectreserva" required="required">
             <option label="Cardapios Personalizados" />
         </select>
-        <input type="submit" value="cadastrar"/>
     </fieldset>
 </form>';
 ?>
