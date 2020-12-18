@@ -1,7 +1,5 @@
 <?php
 session_start();
-//echo'<script>sessionStorage.setItem("permissao","2");
-//console.log(sessionStorage.getItem("permissao"));</script>';
     if(!empty($_POST)){
         include "conexao.php";
         $email = $_POST["email"];
@@ -28,7 +26,6 @@ session_start();
                 function aplica(){
                     sessionStorage.setItem("permissao","'.$l["permissao"].'");
                     sessionStorage.setItem("nome","'.$l["nome"].'");
-                    console.log(sessionStorage.getItem("permissao"));
                     volta();
                 }
                 aplica();  

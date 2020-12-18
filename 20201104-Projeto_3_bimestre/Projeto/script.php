@@ -3,7 +3,6 @@
             $("button[name='alterar_tipo']").click(function(){
 
             i = $(this).val();
-                console.log(i);
                 $.post("seleciona_tipo.php",{"id":i},function(r){
                     a = r[0];                               
                     $("input[name='idtipo']").val(a.id_tipo);
@@ -12,7 +11,7 @@
             });
 
             $("button[name='alterar_comida']").click(function(){
-                console.log("teste");
+                
             i = $(this).val();
                 
                 $.post("seleciona_comida.php",{"identificador":i},function(r){
@@ -113,7 +112,6 @@
 
         function salvar_cardapio(){
             $("#salvar").click(function(){ 
-                //console.log($("input[name='comidas[]']").val());
                 var c= Array();
                 var j=0;
                 $.each($("input[name='comidas[]']:checked"), function(i,v){
@@ -125,10 +123,9 @@
                     nome:$("input[name='nome']").val(),
                     comidas:c
            };  
-           console.log(p);      
+              
            
            $.post("atualizar_cardapio.php",p,function(r){
-              console.log(r);
             if(r=='1'){
                 $("#msg").html("cardapio alterado com sucesso.");
                 $(".close").click();
@@ -186,11 +183,9 @@
                             nome:$("input[name='nome']").val(),
                             email:$("input[name='email']").val()
                         };  
-                        console.log($("input[name='hid']").val());
                }   
                
                $.post("atualizar_usuario.php",p,function(r){
-                   console.log(r);
                 if(r=='1'){
                     $("#msg").html("Dados do usuario alterado(os) com sucesso.");
                     $(".close").click();
@@ -252,7 +247,6 @@
         function atualizar_reserva(){
             var id =$("#select").val();
             var t="";
-            console.log(id);
             $.post("seleciona_reserva_de_cardapio.php",{"id":id}, function(g){
                 
             var tabela="<table border='1'><td>nome cardapio</td><td>Nome comida</td><td>tipo comida</td><td>preço</td></tr>";
@@ -280,7 +274,6 @@
                $.each(g, function(indice, valor){
                     if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
                             var i=parseInt(g[con].id_usuario);
-                            console.log("ue");
                             if(c != i){
                                 tabela+="<tr><td colspan='3'><button class='btn btn-danger remover'  value='"+t+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_usuario' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td></tr>";
                                 c=i;
@@ -461,7 +454,6 @@
         function lista_tipo(){
             $.getJSON("seleciona_tipo.php", function(g){
         var lista="";
-        console.log(sessionStorage.getItem('permissao'));
         $.each(g, function(indice, valor){
             lista+="<li>"+valor.tipo+"</li>";
             if(sessionStorage.getItem('permissao') && sessionStorage.getItem('permissao')=="1"){
@@ -503,10 +495,10 @@
         }
 
         function lista_reserva(){
-            console.log("teste");
+          
             if(sessionStorage.getItem("permissao")==1)
             {
-                console.log("i");
+                
                 $.getJSON("seleciona_reserva_de_cardapio.php", function(g){
                 var option="<option label='Selecione um nome' />";
                 $.each(g, function(indice, valor){
@@ -526,7 +518,7 @@
             }
             else{
                 $.getJSON("seleciona_cardapio.php", function(g){
-                    console.log("att");
+                    
                     var option="<option label='Selecione um cardapio' />";
                     $.each(g, function(indice, valor){
                         option+="<option value='"+valor.id_cardapio+"'> "+valor.nome_cardapio+" </option>";
@@ -566,7 +558,7 @@
                 $.getJSON("seleciona_reserva_de_cardapio.php", function(g){
                   
                var tabela="<table border='1'><td>nome cardapio</td><td>Nome comida</td><td>tipo comida</td><td>preço</td></tr>";
-               console.log(g);
+             
                var c=(g[0].nome_cardapio.toString());
                
                var con=0;
@@ -575,7 +567,7 @@
                         var i=g[con].nome_cardapio.toString();
                         
                         if(c != i){
-                            console.log(t+" destro da tabela");
+                            
                             tabela+="<td colspan='4'><button class='btn btn-danger remover'  value='"+t+"'>Remover</button> || <button class='btn btn-warning alterar' name='alterar_reserva' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td>";
                             c=i;
                         }
@@ -593,7 +585,7 @@
                });
             }
             $("#select").change(function(){
-                console.log($("#select").val());
+                
             var id =$("#select").val();
             var t="";
             $.post("seleciona_reserva_de_cardapio.php",{"id":id}, function(g){
