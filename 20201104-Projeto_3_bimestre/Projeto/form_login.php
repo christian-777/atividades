@@ -19,7 +19,7 @@
         <button type="button" class="btn btn-primary autenticar" id="autenticar">Autenticar</button>
         </form>
         <div>
-        Ainda não é cadastrado?<a href='#' class='link_bg_claro'>clique aqui!</a>
+        Ainda não é cadastrado?<a id="sai" href='#' data-toggle='modal' data-target='#modal_cadastro' class='link_bg_claro'>clique aqui!</a>
         </div>
       </div>
     </div>
@@ -27,6 +27,9 @@
 </div>
 <script>
     $(function(){
+      $("#sai").click(function(){
+        $('#modal_login').modal('hide');
+      });
         $("#autenticar").click(function(){
             var senha = $.md5($("input[name='senha']").val());
             $("input[name='senha']").val(senha);

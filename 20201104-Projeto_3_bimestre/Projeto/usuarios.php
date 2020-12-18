@@ -1,7 +1,6 @@
 <?php
-
     echo'<form method="POST" name="form" action="autenticacao.php">
-            <input type="hidden" id="hidden" name="hidden">
+            <input type="hidden" id="hid" name="hid" value="">
             <input type="text" name="nome"/>
             <br />
             <input type="email" name="email"  />

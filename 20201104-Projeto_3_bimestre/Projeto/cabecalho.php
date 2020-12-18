@@ -12,7 +12,7 @@ function cabecalho(){
             <link href='bootstrap/css/bootstrap.min.css' rel='stylesheet' />            
             <link href='css/main.css' rel='stylesheet' />            
             <script src='bootstrap/js/bootstrap.min.js'></script>
-            <script src='js/MD5.js'></script>
+            <script src='js/md5.js'></script>
         </head>
         <body>                
             <nav class='navbar navbar-expand-md bg-primary navbar-dark'>

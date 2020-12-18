@@ -57,7 +57,7 @@
                 i = $(this).val();
                     $.post("seleciona_usuario.php",{"id":i},function(r){
                         a = r[0];        
-                        $("input[name='hidden']").val(a.id_usuario);                       
+                        $("input[name='hid']").val(a.id_usuario);                       
                         $("input[name='nome']").val(a.nome);
                         $("input[name='email']").val(a.email);
                     });
@@ -182,13 +182,15 @@
                }
                else{
                         p = {
-                            id:$("input[name='hidden']").val(),
+                            id:$("input[name='hid']").val(),
                             nome:$("input[name='nome']").val(),
                             email:$("input[name='email']").val()
                         };  
+                        console.log($("input[name='hid']").val());
                }   
                
                $.post("atualizar_usuario.php",p,function(r){
+                   console.log(r);
                 if(r=='1'){
                     $("#msg").html("Dados do usuario alterado(os) com sucesso.");
                     $(".close").click();
@@ -270,8 +272,8 @@
         function atualizar_usuario(){
             
             $.getJSON("seleciona_usuario.php", function(g){
-            var lista="";
-            var table="<table border='1'><tr><td>Nome</td><td>Email</td><td>Senha</td></tr>";
+            var tabela="";
+            var tabela="<table border='2'><tr><td>Nome</td><td>Email</td><td>Senha</td></tr>";
             var c=parseInt(g[0].id_usuario);
                
                var con=0;
@@ -298,7 +300,7 @@
                else{
                 tabela+="<tr><td colspan='3'>|| <button class='btn btn-warning alterar' name='alterar_usuario' value='"+t+"' data-toggle='modal' data-target='#modal'>Alterar</button></td></tr>";
                }
-        tabela+="</table>"
+        tabela+="</table>";
         $("#tabela").html(tabela);
         remove_usuario();
         altera();
@@ -501,11 +503,12 @@
         }
 
         function lista_reserva(){
+            console.log("teste");
             if(sessionStorage.getItem("permissao")==1)
             {
                 console.log("i");
                 $.getJSON("seleciona_reserva_de_cardapio.php", function(g){
-                var option="<option label='Selecione seu nome' />";
+                var option="<option label='Selecione um nome' />";
                 $.each(g, function(indice, valor){
                     option+="<option value='"+valor.id_reserva+"'> "+valor.nome+" </option>";
                 });
@@ -590,6 +593,7 @@
                });
             }
             $("#select").change(function(){
+                console.log($("#select").val());
             var id =$("#select").val();
             var t="";
             $.post("seleciona_reserva_de_cardapio.php",{"id":id}, function(g){

@@ -15,6 +15,7 @@
                             id_usuario='$id'";
     }
     if(!isset($_SESSION["senhas"]) || $_SESSION["senhas"]!=1){
+        $i="ola";
         $nome = $_POST["nome"];
         $email = $_POST["email"];
         $id= $_POST["id"];

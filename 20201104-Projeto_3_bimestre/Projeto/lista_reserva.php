@@ -14,10 +14,10 @@ echo'<fieldset>
     <legend>Reservas</legend>
     <br />
     <div id="msg"></div>
-    <br /> '.$_SESSION["permissao"].'';
-    if(!isset($_SESSION["permissao"]) || $_SESSION["permissao"]==2){
+    <br />';
+    if(!isset($_SESSION["permissao"]) || $_SESSION["permissao"]==1){
         echo'<select id="select">
-        <option label="Selecione seu nome" />
+        <option label="Selecione um nome" />
         </select>';
     }
     echo'<div id="recebe">  
