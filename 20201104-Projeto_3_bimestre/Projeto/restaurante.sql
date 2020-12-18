@@ -1,26 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 4.0.4.2
--- http://www.phpmyadmin.net
---
--- Máquina: localhost
--- Data de Criação: 18-Dez-2020 às 16:41
--- Versão do servidor: 5.6.13
--- versão do PHP: 5.4.17
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Base de Dados: `restaurante`
---
-CREATE DATABASE IF NOT EXISTS `restaurante` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `restaurante`;
 
 -- --------------------------------------------------------
 
