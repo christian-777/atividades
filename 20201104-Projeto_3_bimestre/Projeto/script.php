@@ -495,8 +495,8 @@
         }
 
         function lista_reserva(){
-          
-            if(sessionStorage.getItem("permissao")==1)
+            console.log(sessionStorage.getItem("permissao"));
+            if(sessionStorage.getItem("permissao")!=3)
             {
                 
                 $.getJSON("seleciona_reserva_de_cardapio.php", function(g){

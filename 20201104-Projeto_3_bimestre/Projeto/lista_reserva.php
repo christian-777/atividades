@@ -15,7 +15,7 @@ echo'<fieldset>
     <br />
     <div id="msg"></div>
     <br />';
-    if(!isset($_SESSION["permissao"]) || $_SESSION["permissao"]==1){
+    if(!isset($_SESSION["permissao"]) || $_SESSION["permissao"]!=3){
         echo'<select id="select">
         <option label="Selecione um nome" />
         </select>';
