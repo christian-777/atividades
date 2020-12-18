@@ -35,9 +35,9 @@
     </p>
     <p>
         <h3>Dia 30/09/2020 Filtro com select e inner join:</h3>
-        <a href="20200923/especie.php">Taxonomia- Tabela especies de animais || </a>
-        <a href="20200923/familia.php">Taxonomia- Tabela familias de animais || </a>
-        <a href="20200923/genero.php">Taxonomia- Tabela genero de animais</a>
+        <a href="20200930/especie.php">Taxonomia- Tabela especies de animais || </a>
+        <a href="20200930/familia.php">Taxonomia- Tabela familias de animais || </a>
+        <a href="20200930/genero.php">Taxonomia- Tabela genero de animais</a>
     </p>
     <p>
         <h3>Dia 14/10/2020:</h3>
