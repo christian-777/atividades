@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+    <html lang="pt-br">
+        <head>
+            <meta charset='utf-8' />
+            <script src='js/jquery-3.5.1.min.js'></script>
+            <script src='js/moment.js'></script>
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js" integrity="sha384-LtrjvnR4Twt/qOuYxE721u19sVFLVSA4hf/rRt6PrZTmiPltdZcI7q7PXQBYTKyf" crossorigin="anonymous"></script>        
+            <link href='css/main.css' rel='stylesheet' />   
+            <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+            <title>Exercicio 1</title>
+            <script>
+                $(document).ready(function(){
+                    $("#l1").click(function(){
+                        if($(this).val()==0){
+                            $("body").css("font-size","2em");
+                            $(this).val(1);
+                        }
+                        else{
+                            $("body").css("font-size","1em");
+                            $(this).val(0);
+                        }
+                    });
+                    $("#l2").click(function(){
+                        if($(this).val()==0){
+                            $("body").css("background-color","black");
+                            $(".b").removeClass("text-dark");
+                            $("p, h1, h4, .b").css("color", "yellow");
+                            $("nav").removeClass("bg-primary");
+                            $("nav").addClass("bg-dark");
+                            $("span, .a").removeClass("text-light");
+                            $("span, .a, .b").addClass("text-warning");
+                            $(".borda1").css("border-color", "yellow");
+                            $(this).val(1);
+                            $("#l3").val(0);
+                        }
+                        else{
+                            $("body").css("background-color","white");
+                            $("p, h1, h4").css("color", "black");
+                            $("nav").removeClass("bg-dark");
+                            $("nav").addClass("bg-primary");
+                            $("span, .a, .b").removeClass("text-warning");
+                            $("span, .a").addClass("text-light");
+                            $(".b").addClass("text-dark");
+                            $(".borda1").css("border-color", "black");
+                            $(this).val(0);
+                        }
+                    });
+                    $("#l3").click(function(){
+                        if($(this).val()==0){
+                            $("body").css("background-color","#505050");
+                            $(".b").removeClass("text-warning");
+                            $(".b").removeClass("text-dark");
+                            $("p, h1, h4, .b").css("color", "white");
+                            $("nav").removeClass("bg-primary");
+                            $("nav").addClass("bg-dark");
+                            $("span, .a").addClass("text-light");
+                            $(".borda1").css("border-color", "white");
+                            $(this).val(1);
+                            $("#l2").val(0);
+                        }
+                        else{
+                            $("body").css("background-color","white");
+                            $("p, h1, h4, .b").css("color", "black");
+                            $("nav").removeClass("bg-dark");
+                            $("nav").addClass("bg-primary");
+                            $("span, .a").addClass("text-light");
+                            $(".borda1").css("border-color", "black");
+                            $(this).val(0);
+                        }
+                    });
+                });
+            </script>
+        </head>
+        <body>
+            <header>
+                <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+                    
+                        <span class="borda navbar-brand text-light " >Opições de acessibilidade</span>
+
+                    <ul class="nav nav-tabs ">
+                        <li id="l1" value="0" class="nav-item "><a href="#" class="a text-light nav-link">Aumento da fonte</a></li>
+                        <li id="l2" value="0" class="nav-item "><a href="#" class="a text-light nav-link">Alto contraste</a></li>
+                        <li id="l3" value="0" class="nav-item "><a href="#" class="a text-light nav-link">Modo Noturno</a></li>
+                    </ul>
+                </nav>
+            </header>
+            <main class="container">
+                <br />
+                <div class="borda1">
+                    <h4>Onde deseja ir?</h4>
+                    <a class="b text-dark" href="#1"> O que é HTML?!</a> &emsp; <a class="b text-dark" href="#2">Como funciona?!</a>
+                </div>
+                <h1 id="1">O que é HTML?!</h1>
+                <p>
+                    "Criada pelo britânico Tim Berners-Lee, o acrônimo HTML significa HiperText Markup Language, traduzindo ao português:
+                     Linguagem de Marcação de Hipertexto.  O HTML é o componente básico da web, ele permite inserir o conteúdo e estabelecer
+                      a estrutura básica de um website. Portanto, ele serve para dar significado e organizar as informações de uma página na web.
+                       Sem isso, o navegador não saberia exibir textos como elementos ou carregar imagens e outros conteúdos.
+                       Os hipertextos são conjuntos de elementos conectados. Esses podem ser palavras, imagens, vídeos, documento, etc.
+                        Quando conectados, formam uma rede de informações que permite a comunicação de dados, organizando conhecimentos e guardando informações.
+                        Ao visitar uma página simples na web, você pode perceber que existem diferentes distribuições e tamanhos para títulos,
+                         parágrafos, imagens, vídeos e qualquer outro elemento. Essa estrutura é estabelecida através do HTML. No inicio da web,
+                          era comum encontrar sites apenas contendo textos e imagens simples, com estrutura básica e sem estilizações. 
+                          Porém, nos dias atuais, muito dificilmente você encontrará sites que possuam apenas elementos HTML. Portanto,
+                           podemos considerar o HTML o “esqueleto” da sua página.
+                           Imagine então que além do esqueleto, é necessário ter o corpo. Para isso, temos então as linguagens CSS e o JavaScript,
+                            que em conjunto com HTML, formam a base para todos os websites atuais. Veremos mais à frente o que significam essaslinguagens."
+                </p>
+                <h1 id="2">Como funciona?!</h1>
+                <p>
+                    "Através de um documento HTML, ou seja, um documento com a extensão .html ou .htm., o navegador faz a leitura do arquivo 
+                    e renderiza o seu conteúdo para que o usuário final possa visualizá-lo. Os arquivos .html podem ser visualizados em qualquer
+                     navegador (como Google Chrome, Safari, ou Mozilla Firefox).
+                    Geralmente um site é composto por diversas páginas HTML, como por exemplo: um website que contenha três páginas 
+                    (uma homepage, uma página de contato e uma página de produtos) receberá ao menos três documentos .html distintos, 
+                    sendo uma para cada página do website.
+                    O código pode ser escrito através de qualquer editor de texto, como o próprio bloco de notas. 
+                    Cada página consiste em uma série de tags (também chamados de elementos) que podem ser considerados os 
+                    blocos de construção das páginas. Portanto, esses blocos são a maneira com a qual o HTML faz a marcação dos conteúdos, 
+                    criando a hierarquia e a estrutura do mesmo, dividido entre seções, parágrafos, cabeçalhos, e outros."
+                </p>
+            </main>
+        </body>
+    </html>
